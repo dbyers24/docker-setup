@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dbyers24/docker-setup -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dbyers24/docker-setup npm run test
